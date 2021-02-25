@@ -5,7 +5,7 @@
 
 - [Demo](#demo)
 
-### Installation
+## Installation
 
 - Run the following commands:
 ```
