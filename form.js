@@ -5,14 +5,14 @@ loginForm.addEventListener("submit", (e) => {
     validateEmail(loginForm.email.value)
     validatePhone(loginForm.phone.value)
     validateName(loginForm.nameAndSurname.value)
+    verifyPassword(loginForm.password.value, loginForm.repeatPassword.value)
 
     const user = {
       name: loginForm.nameAndSurname.value.split(" ")[0],
       surname: loginForm.nameAndSurname.value.split(" ").slice(1).join(" "),
       phone: loginForm.phone.value,
       email: loginForm.email.value,
-      password: loginForm.pswd.value,
-      repeatPassword: loginForm.repeatPassword.value
+      password: loginForm.password.value,
     }
     
     console.log(user)
@@ -36,7 +36,7 @@ function validatePhone(phone){
  }
  
 function validateName(nameAndSurname){
-  var letters = /^[A-Za-z]+$/;
+  var letters = /( [A-Za-z]+$)/;
   
   if(nameAndSurname.match(letters)){ 
     return true;
@@ -45,10 +45,8 @@ function validateName(nameAndSurname){
   }
 }
 
-// function verifyPassword() {
-//   var password = document.getElementById("pswd").value;
-//   var confirmPassword = document.getElementById("repeatPassword").value;
-//   if (password !== confirmPassword) {
-//       return alert("The passwords are not the same");   
-//   }
-// }
+function verifyPassword(password, confirmPassword) {
+  if (password !== confirmPassword) {
+      return alert("The passwords are not the same");   
+  }
+}
