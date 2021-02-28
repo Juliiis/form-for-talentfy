@@ -33,7 +33,7 @@ function validatePhone(phone){
   if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)){
     return true;
    } else {
-     alert("invalid e-mail")
+     alert("The email must be valid")
    }
  }
  
@@ -43,12 +43,12 @@ function validateName(nameAndSurname){
   if(nameAndSurname.match(letters)){ 
     return true;
   } else {
-    alert('Only alphabet letters'); 
+    alert('The name cannot contain numbers'); 
   }
 }
 
 function verifyPassword(password, confirmPassword) {
   if (password !== confirmPassword) {
-      return alert("The passwords are not the same");   
+      return alert("Passwords must be the same");   
   }
 }
