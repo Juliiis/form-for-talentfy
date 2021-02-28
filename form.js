@@ -1,4 +1,7 @@
 const loginForm = document.getElementById("login-form");
+const phoneErrorMessage = document.getElementById("phone-error");
+const nameErrorMessage = document.getElementById("name-error");
+const passwordErrorMessage = document.getElementById("password-error");
 
 loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -16,39 +19,51 @@ loginForm.addEventListener("submit", (e) => {
     }
     
     console.log(user)
-    loginForm.reset();
 })
 
 function validatePhone(phone){
   var phoneRegExp = /^\d{9}$/;
 
   if(phone.match(phoneRegExp)) {
+    loginForm.phone.classList.remove('input-error')
+    phoneErrorMessage.classList.add('hidden')
     return true;
   } else {
-    alert('The phone must have 9 digits'); 
+    loginForm.phone.classList.add('input-error')
+    phoneErrorMessage.classList.remove('hidden')
   }
- }
+}
 
- function validateEmail(email) {
+function validateEmail(email) {
   if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)){
     return true;
    } else {
      alert("The email must be valid")
    }
- }
+}
  
 function validateName(nameAndSurname){
   var letters = /^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/;
   
   if(nameAndSurname.match(letters)){ 
+    loginForm.nameAndSurname.classList.remove('input-error')
+    nameErrorMessage.classList.add('hidden')
     return true;
   } else {
-    alert('The name cannot contain numbers'); 
+    loginForm.nameAndSurname.classList.add('input-error')
+    nameErrorMessage.classList.remove('hidden')
   }
 }
 
 function verifyPassword(password, confirmPassword) {
-  if (password !== confirmPassword) {
-      return alert("Passwords must be the same");   
+  if (password === confirmPassword) {
+    loginForm.password.classList.remove('input-error')
+    loginForm.repeatPassword.classList.remove('input-error')
+    passwordErrorMessage.classList.add('hidden')
+    return true; 
   }
+
+  loginForm.password.classList.add('input-error')
+  loginForm.repeatPassword.classList.add('input-error')
+  passwordErrorMessage.classList.remove('hidden')
 }
