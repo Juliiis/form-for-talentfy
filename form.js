@@ -19,12 +19,6 @@ loginForm.addEventListener("submit", (e) => {
     loginForm.reset();
 })
 
-function validateEmail(email) {
- if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)){
-   return true;
-  } else "invalid e-mail"
-}
-
 function validatePhone(phone){
   var phoneRegExp = /^\d{9}$/;
 
@@ -34,9 +28,17 @@ function validatePhone(phone){
     alert('The phone must have 9 digits'); 
   }
  }
+
+ function validateEmail(email) {
+  if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)){
+    return true;
+   } else {
+     alert("invalid e-mail")
+   }
+ }
  
 function validateName(nameAndSurname){
-  var letters = /( [A-Za-z]+$)/;
+  var letters = /^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/;
   
   if(nameAndSurname.match(letters)){ 
     return true;
